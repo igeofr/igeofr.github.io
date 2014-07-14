@@ -1,7 +1,179 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Le drone en France</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--CSS Leaflet*/-->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<!--CSS Leaflet-MiniMap : https://github.com/Norkart/Leaflet-MiniMap-->
+	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/MiniMap/Control.MiniMap.css" />
+	<!--CSS Leaflet.MousePosition : https://github.com/ardhi/Leaflet.MousePosition-->
+	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/MousePosition/L.Control.MousePosition.css" />
+	<!--CSS Icones : http://fortawesome.github.io/Font-Awesome/cheatsheet/ -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<!--CSS Leaflet.GeoSearch : https://github.com/smeijer/L.GeoSearch-->
+	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/GeoSearch/css/l.geosearch.css" />
+
+
+	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/markercluster/MarkerCluster.css" />
+	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/markercluster/MarkerCluster.Default.css" />
+
+  <style>
+      body {
+          padding: 0;
+          margin: 0;
+      }
+      html, body, #map {
+          height: 100%;
+          width: 100%;
+      }
+  </style>
+</head>
+
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+	<script src="constructeurs.js" type="text/javascript"></script>
+	<script src="drones.js" type="text/javascript"></script>
+
+
+	<!--JS Leaflet-->
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<!--JS Leaflet-MiniMap : https://github.com/Norkart/Leaflet-MiniMap-->
+	<script src="http://igeo.fr/leaflet/plugins/MiniMap/Control.MiniMap.js" type="text/javascript"></script>
+	<!--JS Leaflet.MousePosition : https://github.com/ardhi/Leaflet.MousePosition-->
+	<script src="http://igeo.fr/leaflet/plugins/MousePosition/L.Control.MousePosition.js" type="text/javascript"></script>
+	<!--JS Leaflet.EasyButton :https://github.com/CliffCloud/Leaflet.EasyButton-->
+	<script src="http://igeo.fr/leaflet/plugins/EasyButton/easy-button.js" type="text/javascript"></script>
+	<!--JS Leaflet.GeoSearch : https://github.com/smeijer/L.GeoSearch-->
+	<script src="http://igeo.fr/leaflet/plugins/GeoSearch/js/l.control.geosearch.js"></script>
+	<script src="http://igeo.fr/leaflet/plugins/GeoSearch/js/l.geosearch.provider.openstreetmap.js"></script>
+
+
+
+	<script src="http://igeo.fr/leaflet/plugins/markercluster/leaflet.markercluster-src.js"></script>
+	<div id="map"></div>
+	<script type="text/javascript">
+
+
+
+
+	// IGN Géoportail Api Key
+	var ignApiKey = "5i9ic92pwzedm3hcuo4nsh6e" ;
+
+	// IGN ORTHO
+	var orthoWmtsUrl	= "http://gpp3-wxs.ign.fr/"+ignApiKey + "/wmts?LAYER=ORTHOIMAGERY.ORTHOPHOTOS&EXCEPTIONS=text/xml&FORMAT=image/jpeg&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&STYLE=normal&TILEMATRIXSET=PM&&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}" ;
+	var ORTHO= L.tileLayer(orthoWmtsUrl, {attribution: '&copy; <a href="http://www.ign.fr/">IGN</a>'});
+
+	// MapBox
+	var mapbox   = L.tileLayer('https://b.tiles.mapbox.com/v3/examples.c7d2024a/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors -- <a href="http://www.mapbox.com/">MapBox</a> VectorTiles'});
+	var outdoor   = L.tileLayer('http://a.tiles.mapbox.com/v3/aj.um7z9lus/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors -- <a href="http://www.mapbox.com/">MapBox</a> VectorTiles'});
+
+	//Stamen
+	var stamen   = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors -- <a href="http://www.stamen.com/">Stamen Design</a>'});
+
+	//MapQuest
+	var MapQuestOpen_OSM = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+	attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+	subdomains: '1234'});
+
+	//OSM
+	var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'});
+
+	var baseMap = {"Mapbox": mapbox, "Mapnik": OpenStreetMap_Mapnik,"MapQuest": MapQuestOpen_OSM, "Mapbox Outdoor": outdoor,"OSM Toner": stamen, "IGN Ortho":ORTHO};
+
+	//----------------------------------------------------------------------------------------------------------------
+
+	var myIcon1 = L.icon({
+								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin3.png',
+								iconSize: [26, 26],
+								iconAnchor: [13, 26]
+								});
+
+	var myIcon2 = L.icon({
+								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin2.png',
+								iconSize: [24, 24],
+								iconAnchor: [12, 24]
+								});
+
+	var construct = L.geoJson(constructeurs, {
+		onEachFeature: function (feature, layer) {
+			layer.bindPopup('<b>' +feature.properties.CONSTRUCT +'</b><br><a>Site web :</a> <a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a><br>'),
+			layer.setIcon (layer.options.icon =myIcon1);
+			//layer.setOpacity(0.9);
+			}
+	});
+
+	var drone = L.geoJson(drones, {
+		onEachFeature: function (feature, layer) {
+			layer.bindPopup(feature.properties.Societe);
+			layer.setIcon (layer.options.icon =myIcon2);
+
+		}
+	});
+	var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: true});
+			markers.addLayer(drone);
+
+	var overlays = {"Exploitants en activités particulières au moyen d'aéronefs télé-pilotés 02/07/2014": markers, "Conctructeurs": construct};
+
+//----------------------------------------------------------------------------------------------------------------
+
+
+
+	var map = new L.Map('map',
+			{center: [46.5, 2.5],
+			zoom: 6,
+			layers: [mapbox,construct,markers]
+	});
+
+	L.control.layers(baseMap,overlays,{ collapsed: true }).addTo(map);
+
+
+
+//----------------------------------------------------------------------------------------------------------------
+
+	//Mini Map
+	var mapbox2 = new L.TileLayer('https://b.tiles.mapbox.com/v3/examples.c7d2024a/{z}/{x}/{y}.png');
+	var miniMap = new L.Control.MiniMap(mapbox2, { toggleDisplay: true }).addTo(map);
+
+	L.control.mousePosition().addTo(map);
+
+//----------------------------------------------------------------------------------------------------------------
+
+		// Localisation
+	function onLocationFound(e) {
+		var radius = e.accuracy / 2;
+
+		L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+		L.circle(e.latlng, radius).addTo(map);
+	}
+
+	function onLocationError(e) {
+			alert(e.message);
+	}
+
+	map.on('locationfound', onLocationFound);
+	map.on('locationerror', onLocationError);
+
+	var localisation = L.easyButton('fa-compass',function () {map.locate({setView: true, maxZoom: 11})},'Se localiser sur la carte');
+
+//----------------------------------------------------------------------------------------------------------------
+
+		// Information sur la carte
+		var infos =L.easyButton('fa-envelope',function () {alert('Nous contacter : florian@test.fr')});
+
+//----------------------------------------------------------------------------------------------------------------
+
+		// GeoRecherche
+		new L.Control.GeoSearch({
+		    provider: new L.GeoSearch.Provider.OpenStreetMap(),
+		    position: 'topcenter',
+		    showMarker: false
+		}).addTo(map);
+
+	</script>
 </body>
 </html>
