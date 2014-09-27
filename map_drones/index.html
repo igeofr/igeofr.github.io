@@ -98,7 +98,7 @@ $.getJSON('drones.geojson', function(data) {
 	var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: true});
 			markers.addLayer(drone);
 
-	var overlays = {"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés 02/07/2014<br>-> <a href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>Pour en savoir plus</a><br>-> <a href =http://www.igeo.fr>Signaler une erreur</a>": markers};
+	var overlays = {"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés 02/07/2014<br>-> <a href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>Pour en savoir plus</a><a href =https://github.com/igeofr/igeofr.github.io/edit/master/map_drones/>Contribuer et maaintenir le fichiers</a><br>-> <a href =http://www.igeo.fr>Signaler une erreur</a>": markers};
 
 //----------------------------------------------------------------------------------------------------------------
 
