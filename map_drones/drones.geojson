@@ -1,6 +1,7 @@
-drones={
+{
 "type": "FeatureCollection",
-
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
 "features": [
 { "type": "Feature", "properties": { "NOM": "1 DRONE", "ADRESSE": "869 CHEMIN DE MONTGOIN", "VILLE": "01140 GARNERANS", "PAYS": null, "WEB": null }, "geometry": { "type": "Point", "coordinates": [ 4.840434, 46.20516 ] } },
 { "type": "Feature", "properties": { "NOM": "3D AEROVISION", "ADRESSE": "AÉRODROME DES AJONCS - RUE HENRI BESSEMER", "VILLE": "85000 LA ROCHE SUR YON", "PAYS": null, "WEB": "http:\/\/www.3daerovision.fr" }, "geometry": { "type": "Point", "coordinates": [ -1.426442, 46.670511 ] } },
@@ -687,4 +688,4 @@ drones={
 { "type": "Feature", "properties": { "NOM": "ZEPPELINE", "ADRESSE": "12 RUE DES VIOLETTES", "VILLE": "68320 FORTSCHWIHR", "PAYS": null, "WEB": null }, "geometry": { "type": "Point", "coordinates": [ 7.450849, 48.08843 ] } },
 { "type": "Feature", "properties": { "NOM": "ZOOOMEZ SARL", "ADRESSE": "6 PASSAGE LONJON", "VILLE": "34000 MONTPELLIER", "PAYS": null, "WEB": "http:\/\/zooomez.fr" }, "geometry": { "type": "Point", "coordinates": [ 3.9011747, 43.6047275 ] } }
 ]
-};
+}
