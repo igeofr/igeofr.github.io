@@ -1,6 +1,6 @@
 drones={
 "type": "FeatureCollection",
-                                                                                
+
 "features": [
 { "type": "Feature", "properties": { "NOM": "1 DRONE", "ADRESSE": "869 CHEMIN DE MONTGOIN", "VILLE": "01140 GARNERANS", "PAYS": null, "WEB": null }, "geometry": { "type": "Point", "coordinates": [ 4.840434, 46.20516 ] } },
 { "type": "Feature", "properties": { "NOM": "3D AEROVISION", "ADRESSE": "AÉRODROME DES AJONCS - RUE HENRI BESSEMER", "VILLE": "85000 LA ROCHE SUR YON", "PAYS": null, "WEB": "http:\/\/www.3daerovision.fr" }, "geometry": { "type": "Point", "coordinates": [ -1.426442, 46.670511 ] } },
