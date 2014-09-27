@@ -1,10 +1,10 @@
 {
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
+
 "features": [
 { "type": "Feature", "properties": { "NOM": "1 DRONE", "ADRESSE": "869 CHEMIN DE MONTGOIN", "VILLE": "01140 GARNERANS", "PAYS": "FRANCE", "WEB": null }, "geometry": { "type": "Point", "coordinates": [ 4.840434, 46.20516 ] } },
-{ "type": "Feature", "properties": { "NOM": "3D AEROVISION", "ADRESSE": "AÉRODROME DES AJONCS - RUE HENRI BESSEMER", "VILLE": "85000 LA ROCHE SUR YON", "PAYS": "FRANCE", "WEB": "http:\/\/www.3daerovision.fr" }, "geometry": { "type": "Point", "coordinates": [ -1.426442, 46.670511 ] } },
+{ "type": "Feature", "properties": { "NOM": "3D AEROVISION", "ADRESSE": "AÉRODROME DES AJONCS - RUE HENRI BESSEMER", "VILLE": "85000 LA ROCHE SUR YON", "PAYS": "FRANCE", "WEB": "http:\/\/www.3daerovision.fr" }, "geometry": { "type": "Point", "coordinates": [ -1.3763427, 46.6962753 ] } },
 { "type": "Feature", "properties": { "NOM": "640 PRODUCTIONS", "ADRESSE": "21 ROUTE DE L AVIATION", "VILLE": "64600 ANGLET", "PAYS": "FRANCE", "WEB": "http:\/\/www.640production.com" }, "geometry": { "type": "Point", "coordinates": [ -1.514699, 43.481402 ] } },
 { "type": "Feature", "properties": { "NOM": "7TH SKY SARL", "ADRESSE": "15 IMPASSE VICTOR ANTHERIEU", "VILLE": "34110 FRONTIGNAN", "PAYS": "FRANCE", "WEB": "http:\/\/www.7thsky.fr" }, "geometry": { "type": "Point", "coordinates": [ 3.755999, 43.444815 ] } },
 { "type": "Feature", "properties": { "NOM": "ABC DRONE", "ADRESSE": "41 RUE DES STERNES", "VILLE": "56370 SARZEAU", "PAYS": "FRANCE", "WEB": "http:\/\/www.abcdrone.fr" }, "geometry": { "type": "Point", "coordinates": [ -2.768463, 47.527684 ] } },
