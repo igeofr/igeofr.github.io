@@ -24,8 +24,7 @@ La donnée est disponible sous licence [CC BY-SA 3.0 FR]
 - Géocodage avec le plugin QGIS [MMQGIS](http://michaelminn.com/linux/mmqgis/)
 
 ## Mise à jour du fichier
-Des pistes 
-Suite à la décourte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) pour récupérer un tableur.  
+Une piste : Suite à la décourte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) pour récupérer un tableur.  
 
 ##Le mot de la fin
 Si vous avez des propositions d'améliorations ou si vous êtes motivés pour participer à ce projet alors n'hésitez pas à me contacter ([@iGeoFlo](https://twitter.com/iGeoFlo)).
