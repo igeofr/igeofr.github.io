@@ -5,7 +5,7 @@
 ### Téléchargement
 Le fichier localisant les exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson 
 
-Fichier créé à partir de la liste du 02/07/2014
+[Fichier créé à partir de la liste du 02/07/2014](/exploitants.geojson)
 
 ### Source des données
 Les données sont issues de la liste disponible [ici] (http://listedrones.dsac.fr)
