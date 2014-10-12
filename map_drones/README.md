@@ -23,5 +23,9 @@ La donnée est disponible sous licence [CC BY-SA 3.0 FR]
 - Nettoyage du fichier et vérification d'un maximum d'adresses (+ajout des sites internet)
 - Géocodage avec le plugin QGIS [MMQGIS](http://michaelminn.com/linux/mmqgis/)
 
+## Mise à jour du fichier
+Des pistes 
+Suite à la décourte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) pour récupérer un tableur.  
+
 ##Le mot de la fin
-Si d'autres personnes sont motivées pour participer au projet et maintenir le fichier n'hésitez pas à me contacter ([@iGeoFlo](https://twitter.com/iGeoFlo)).
+Si vous avez des propositions d'améliorations ou si vous êtes motivés pour participer à ce projet alors n'hésitez pas à me contacter ([@iGeoFlo](https://twitter.com/iGeoFlo)).
