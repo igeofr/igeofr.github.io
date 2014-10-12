@@ -1,6 +1,6 @@
 ## Les exploitants en activités particulières au moyen d'aéronefs télé-pilotés
 
-[Exemple de carte localisant les exploitants.] (http://igeofr.github.io/map_drones/exploitants.html)
+[Exemple de carte localisant les exploitants en activités particulières au moyen d'aéronefs télé-pilotés.] (http://igeofr.github.io/map_drones/exploitants.html)
 
 ## Téléchargement
 Le fichier des exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson 
