@@ -20,7 +20,7 @@ La donnée est disponible sous licence [CC BY-SA 3.0 FR]
 
 - Téléchargement du dernier fichier mis à disposition par la DGAC (fichier du 02/07/2014)
 - Export du fichier PDF en tableur  
-- Nettoyage du fichier, vérification d'un maximum d'adresses (+ajout des sites internet)
+- Nettoyage du fichier et vérification d'un maximum d'adresses (+ajout des sites internet)
 - Géocodage avec le plugin QGIS [MMQGIS](http://michaelminn.com/linux/mmqgis/)
 
 ##Le mot de la fin
