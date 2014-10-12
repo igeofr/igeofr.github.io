@@ -1,20 +1,20 @@
 ## Les exploitants en activités particulières au moyen d'aéronefs télé-pilotés
 
-[Exemple de carte localisant les exploitants.] (http://igeofr.github.io/map_drones/exploitants.html)
+>>> [Exemple de carte localisant les exploitants.] (http://igeofr.github.io/map_drones/exploitants.html)
 
 ### Téléchargement
-Le fichier localisant les exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson 
+Le fichier des exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson 
 
 [Fichier créé à partir de la liste du 02/07/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/exploitants02072014.geojson)
 
 ### Source des données
-Les données sont issues de la liste disponible [ici] (http://listedrones.dsac.fr)
+Les données sont issues de la liste disponible [ici] (http://listedrones.dsac.fr).
 
 Et régulièrement [publiée en pdf] (http://www.developpement-durable.gouv.fr/Effectuer-des-activites) sur le site du ministère de l'écologie, du développement durable et de l'énergie. 
 
 ### Licence
 La donnée est disponible sous licence [CC BY-SA 3.0 FR]
-(http://creativecommons.org/licenses/by-sa/3.0/fr/)
+(http://creativecommons.org/licenses/by-sa/3.0/fr/).
 
 ###Création du fichier initial 
 
