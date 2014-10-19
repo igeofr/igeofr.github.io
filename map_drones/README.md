@@ -27,9 +27,9 @@ activités de lutte contre l’incendie
 - FOR_OBS : Formation à l’activité OBS
 - AUT : Toute autre activité nécessitant une dérogation aux règles de l’air
 - FOR_AUT : Formation à toute autre activité nécessitant une dérogation aux règles de l’air
-- S1 : Scénario S4 autorisé
-- S2 : Scénario S4 autorisé
-- S3 : Scénario S4 autorisé
+- S1 : Scénario S1 autorisé
+- S2 : Scénario S2 autorisé
+- S3 : Scénario S3 autorisé
 - S4 : Scénario S4 autorisé
 - FPDC : Membre de la Fédération professionnelle des drones civils 
 
