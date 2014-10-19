@@ -34,9 +34,9 @@ activités de lutte contre l’incendie
 - FPDC : Membre de la Fédération professionnelle des drones civils 
 
 ## Source des données
-Les données sont issues de la liste disponible [ici] (http://listedrones.dsac.fr).
+Les données sont issues de la liste gérée par la DGAC et disponible [ici] (http://listedrones.dsac.fr).
 
-Et régulièrement [publiée en pdf] (http://www.developpement-durable.gouv.fr/Effectuer-des-activites) sur le site du ministère de l'écologie, du développement durable et de l'énergie. 
+Cette liste est régulièrement [publiée en pdf] (http://www.developpement-durable.gouv.fr/Effectuer-des-activites) sur le site du ministère de l'écologie, du développement durable et de l'énergie. 
 
 La Fédération Nationale du Drone Civil m'a mis à disposition le listing de ses membres de manière à ajouter un champ supplémentaire.
 
@@ -58,10 +58,6 @@ Les difficultés :
 Une piste : Suite à la découverte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait peut être plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) pour récupérer le listing.  
 - identifier facilement les changements dans le fichier de la DGAC
 - modifier l'emplacement d'un point lorsque l'adresse évolue (en utilisant les lat-long)
-
-
-
-
 
 ##Le mot de la fin
 Si vous avez des propositions d'améliorations ou si vous êtes motivés pour participer à ce projet alors n'hésitez pas à me contacter ([@iGeoFlo](https://twitter.com/iGeoFlo)).
