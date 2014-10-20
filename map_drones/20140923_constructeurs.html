@@ -111,25 +111,13 @@ $.getJSON('20140923_constructeurs.geojson', function(data) {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	var heat = L.heatLayer(coords, {maxZoom: 9,max:1, radius: 15,blur: 15, gradient: {
-				0.0: "rgba(000,000,255,0)",
-        0.2: "rgba(000,000,255,1)",
-        0.4: "rgba(000,255,255,1)",
-        0.6: "rgba(000,255,000,1)",
-        0.8: "rgba(255,255,000,1)",
-        1.0: "rgba(255,000,000,1)"}
-	});
-
-
-//----------------------------------------------------------------------------------------------------------------
-
-	var overlays = {"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés 18/09/2014 <br>-> <a href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>Pour en savoir plus</a>": markers,"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés<br><br>-> <a href =https://github.com/igeofr/igeofr.github.io/edit/master/map_drones/>Contribuer et maintenir le fichier</a> <br>-> <a href =https://twitter.com/iGeoFlo>Signaler une erreur</a>":heat };
+	var overlays = {"Liste des constructeurs d'aéronefs télépilotés<br>ayant reçu une attestation de conception 23/09/2014<br>-> <a href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>Pour en savoir plus</a>": markers};
 
 //----------------------------------------------------------------------------------------------------------------
 
 	var map = new L.Map('map',
 			{center: [46.5, 2.5],
-			zoom: 6,
+			zoom: 5,
 			layers: [mapbox,markers],
 			maxZoom: 15
 	});
