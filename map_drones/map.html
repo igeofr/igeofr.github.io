@@ -79,19 +79,23 @@
 					<div class="sidebar-pane" id="home">
 							<h2>Cartographie des opérateurs et contructeurs d'aéronefs télépilotés</h2>
 
-							<p style="text-align:justify;">Pour accompagner le développement des drones civils, la DGAC (Direction Générale de l'Aviation Civile) a élaboré un cadre réglementaire que je vous
-							invite à découvrir sur <a class="link" href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>cette page.</a>
-
-							<br><br>Dans le cadre de cette réglementation, les opérateurs de drones souhaitant voler sur le territoire français doivent obtenir
-							une autorisation de la DGAC.
-
-							<br><br>Ces opérateurs sont listés dans un fichier consultable <a class="link" href =http://listedrones.dsac.fr>ici</a>.
-
-							<br><br>Pour aller plus loin qu'un simple tableur publié et pour faciliter la recherche d'opérateurs de proximité cette cartographie a été réalisée.
-
+							<p style="text-align:justify;">Cette carte a été créée pour faciliter la recherche d'opérateurs et/ou constructeurs de drones autorisés par la <a class="link" href =http://www.developpement-durable.gouv.fr/-Secteur-Aerien,1633-.html> DGAC</a> (Direction Générale de l'Aviation Civile).
 							</p>
 
-							<br><br>
+							<h3>Petit rappel :</h3>
+							<p style="text-align:justify;">Pour accompagner le développement des drones civils, la <a class="link" href =http://www.developpement-durable.gouv.fr/-Secteur-Aerien,1633-.html> DGAC</a> a élaboré une réglementation que je vous
+							invite à découvrir sur <a class="link" href =http://www.developpement-durable.gouv.fr/Quelle-place-pour-les-drones-dans.html>cette page.</a>
+
+							<br><br>Dans le cadre de cette réglementation : <br>
+							- les opérateurs de drones souhaitant voler sur le territoire français doivent obtenir
+							une autorisation de la DGAC. Ces opérateurs sont listés dans un fichier consultable <a class="link" href =http://listedrones.dsac.fr>ici</a>.
+
+							<br><br>- les constructeurs reçoivent quant à eux une autorisation de conception pour le modèle présenté lorsque celui-ci est conforme à la réglementation.</p>
+
+
+
+
+							<br><br><br><br>
 							<h4>Les partenaires</h4>
 
 							<p style="text-align:justify;">
@@ -126,13 +130,13 @@
 				 </div>
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<div class="sidebar-pane" id="profile">
-							<h2>Nous contacter</h2>
+							<h2>Contribuer au projet</h2>
 							<p style="text-align:justify;">
 
 							<a class="link" href =https://twitter.com/iGeoFlo>Signaler une erreur</a>
 							<br><br>
 
-							<a class="link" href =https://github.com/igeofr/igeofr.github.io/edit/master/map_drones/>Contribuer et maintenir le fichier</a>
+							<a>Vous souhaitez participer au maintien de cette carte, n'hésitez pas à contacter nos contributeurs.</a>
 							</p>
 					</div>
 			</div>
@@ -179,7 +183,7 @@
 								iconAnchor: [12, 24]
 								});
 	var myIcon1 = L.icon({
-								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin4.png',
+								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin7.png',
 								iconSize: [24, 24],
 								iconAnchor: [12, 24]
 								});
@@ -191,7 +195,8 @@
 	var constructeurs = L.geoJson(data, {
 		onEachFeature: function (feature, layer) {
 			layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
-			'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS
+			'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+			'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'
 			);
 			layer.setIcon (layer.options.icon =myIcon1);
 			coords_constructeurs.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
@@ -320,7 +325,7 @@
 				'<tr><td>[S3] : '+ strs3 +'</td>'+
 				'<td>[S4] : '+ strs4 +'</td></tr>'+
 				'</table>'+
-				'<b>Adhérent à la FPDC :</b> '+ strfpdc
+				'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
 				//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
 
 				);
@@ -351,9 +356,9 @@
 
 //----------------------------------------------------------------------------------------------------------------
 
-	var overlays = {"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés 18/09/2014 <br>": markers,
-									"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés<br><br>->":heat,
-									"Constructeurs" : constructeurs};
+	var overlays = {"Constructeurs d'aéronefs télépilotés ayant <br>reçu une attestation de conception type au 23/09/2014<br>-----------------" : constructeurs,
+									"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés au 18/09/2014": markers,
+									"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés":heat};
 
 //----------------------------------------------------------------------------------------------------------------
 
