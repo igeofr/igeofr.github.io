@@ -16,10 +16,9 @@
 	<!--CSS Leaflet.MarkerCluster : https://github.com/Leaflet/Leaflet.markercluster -->
 	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/markercluster/MarkerCluster.css" />
 	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/markercluster/MarkerCluster.Default.css" />
-
 	<!--http://fontawesome.io/icons/ -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
+	<!--CSS Leaflet.Sidebar https://github.com/turbo87/sidebar-v2-->
 	<link rel="stylesheet" href="http://igeo.fr/leaflet/plugins/sidebar-v2-gh-pages/css/leaflet-sidebar.css" />
 
 	<style>
@@ -64,14 +63,17 @@
 	<script src="http://igeo.fr/leaflet/plugins/markercluster/leaflet.markercluster-src.js"></script>
 	<!--JS Leaflet.heat https://github.com/Leaflet/Leaflet.heat-->
 	<script src="http://igeo.fr/leaflet/plugins/Heat/dist/leaflet-heat.js"></script>
-
+	<!--JS Leaflet.Sidebar https://github.com/turbo87/sidebar-v2-->
 	<script src="http://igeo.fr/leaflet/plugins/sidebar-v2-gh-pages/js/leaflet-sidebar.js"></script>
+
 	<div id="sidebar" class="sidebar collapsed">
 			<!-- Nav tabs -->
 			<ul class="sidebar-tabs" role="tablist">
 					<li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-					<li><a href="#drone" role="tab"><i class="fa fa-asterisk"></i></a></li>
+					<li><a href="#drone" role="tab"><i class="fa fa-database"></i></a></li>
 					<li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+					<li><a href="#techno" role="tab"><i class="fa fa-wrench"></i></a></li>
+
 			</ul>
 
 			<!-- Tab panes -->
@@ -91,20 +93,6 @@
 							une autorisation de la DGAC. Ces opérateurs sont listés dans un fichier consultable <a class="link" href =http://listedrones.dsac.fr>ici</a>.
 
 							<br><br>- les constructeurs reçoivent quant à eux une autorisation de conception pour le modèle présenté lorsque celui-ci est conforme à la réglementation.</p>
-
-
-
-
-							<br><br><br><br>
-							<h4>Les partenaires</h4>
-
-							<p style="text-align:justify;">
-								<a href =http://www.federation-drone.org><img src="http://www.federation-drone.org/wp-content/uploads/2013/06/Logo-RVB-2480x980.png" title="logofpdc" style="width:45%;height:45%;"></a>
-							</p>
-							<br><br>
-							<h4>Les contributeurs</h4>
-							<a class="link" href =https://twitter.com/iGeoFlo>Florian</a>
-
 					</div>
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -133,10 +121,35 @@
 							<h2>Contribuer au projet</h2>
 							<p style="text-align:justify;">
 
-							<a class="link" href =https://twitter.com/iGeoFlo>Signaler une erreur</a>
+							<a class="link" href =https://twitter.com/iGeoFlo>Signaler un changement d'adresse/une erreur</a>
 							<br><br>
 
 							<a>Vous souhaitez participer au maintien de cette carte, n'hésitez pas à contacter nos contributeurs.</a>
+							</p>
+
+							<h3>Les partenaires</h3>
+
+							<p style="text-align:justify;">
+								<a href =http://www.federation-drone.org><img src="http://www.federation-drone.org/wp-content/uploads/2013/06/Logo-RVB-2480x980.png" title="logofpdc" style="width:45%;height:45%;"></a>
+							</p>
+							<br><br>
+							<h3>Les contributeurs</h3>
+							<a class="link" href =https://twitter.com/iGeoFlo>Florian</a>
+					</div>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+					<div class="sidebar-pane" id="techno">
+							<h2>Les outils</h2>
+
+							<h4>Le géocodage</h4>
+							<p style="text-align:justify;"> Le géocodage des opérateurs et constructeurs a été réalisé sur <a class="link" href =http://www.qgis.org> QGIS</a> avec le plugin <a class="link" href =http://michaelminn.com/linux/mmqgis/>MMQGIS</a>.</p>
+
+							<h4>La carte</h4>
+							<p style="text-align:justify;">La carte a été réalisé avec la librairie <a class="link" href =http://leafletjs.com> Leafflet</a> et les plugins suivants:
+							<br>- <a class="link" href =https://github.com/ardhi/Leaflet.MousePosition>MousePosition</a>
+							<br>- <a class="link" href =https://github.com/smeijer/L.GeoSearch>Geosearch</a>
+							<br>- <a class="link" href =https://github.com/turbo87/sidebar-v2>Sidebar-v2</a>
+
 							</p>
 					</div>
 			</div>
@@ -178,14 +191,15 @@
 	//----------------------------------------------------------------------------------------------------------------
 
 	var myIcon = L.icon({
-								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin2.png',
-								iconSize: [24, 24],
-								iconAnchor: [12, 24]
+								iconUrl: 'location_operateurs.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36],
+								popupAnchor: [-1, -20]
 								});
 	var myIcon1 = L.icon({
-								iconUrl: 'http://www.igeo.fr/map-icons/pins/32/pin7.png',
-								iconSize: [24, 24],
-								iconAnchor: [12, 24]
+								iconUrl: 'location_constructeurs.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36]
 								});
 
 //----------------------------------------------------------------------------------------------------------------
@@ -342,23 +356,20 @@
 
 //----------------------------------------------------------------------------------------------------------------
 
-	var heat = L.heatLayer(coords, {maxZoom: 9,max:1, radius: 15,blur: 15, gradient: {
-				0.0: "rgba(000,000,255,0)",
-        0.2: "rgba(000,000,255,1)",
-        0.4: "rgba(000,255,255,1)",
-        0.6: "rgba(000,255,000,1)",
-        0.8: "rgba(255,255,000,1)",
-        1.0: "rgba(255,000,000,1)"}
-	});
-
-//----------------------------------------------------------------------------------------------------------------
-
+//	var heat = L.heatLayer(coords, {maxZoom: 9,max:1, radius: 15,blur: 15, gradient: {
+//				0.0: "rgba(000,000,255,0)",
+//        0.2: "rgba(000,000,255,1)",
+//        0.4: "rgba(000,255,255,1)",
+//        0.6: "rgba(000,255,000,1)",
+//        0.8: "rgba(255,255,000,1)",
+//        1.0: "rgba(255,000,000,1)"}
+//	});
 
 //----------------------------------------------------------------------------------------------------------------
 
 	var overlays = {"Constructeurs d'aéronefs télépilotés ayant <br>reçu une attestation de conception type au 23/09/2014<br>-----------------" : constructeurs,
-									"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés au 18/09/2014": markers,
-									"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés":heat};
+									"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés au 18/09/2014": markers};
+									//"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés":heat
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -369,7 +380,7 @@
 			maxZoom: 15
 	});
 
-	L.control.layers(baseMap,overlays,{ collapsed: true }).addTo(map);
+	L.control.layers(baseMap,overlays,{ collapsed: false }).addTo(map);
 
 
 //----------------------------------------------------------------------------------------------------------------
