@@ -199,7 +199,8 @@
 	var myIcon1 = L.icon({
 								iconUrl: 'location_constructeurs.svg',
 								iconSize: [36, 36],
-								iconAnchor: [18, 36]
+								iconAnchor: [18, 36],
+								popupAnchor: [-1, -20]
 								});
 
 //----------------------------------------------------------------------------------------------------------------
@@ -382,6 +383,14 @@
 
 	L.control.layers(baseMap,overlays,{ collapsed: false }).addTo(map);
 
+//----------------------------------------------------------------------------------------------------------------
+//Centrer la popup lorsqu'elle est ouverte - Source : http://stackoverflow.com/questions/22538473/leaflet-center-popup-and-marker-to-the-map
+
+	map.on('popupopen', function(e) {
+			var px = map.project(e.popup._latlng); console.log(px); console.log(e.popup._container);
+			px.y -= e.popup._container.clientHeight/2
+			map.panTo(map.unproject(px),{animate: true});
+	});
 
 //----------------------------------------------------------------------------------------------------------------
 
