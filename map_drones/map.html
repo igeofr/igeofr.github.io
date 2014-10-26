@@ -352,7 +352,7 @@
 
 //----------------------------------------------------------------------------------------------------------------
 
-	var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 13});
+	var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
 			markers.addLayer(drone);
 
 //----------------------------------------------------------------------------------------------------------------
@@ -378,7 +378,7 @@
 			{center: [46.5, 2.5],
 			zoom: 6,
 			layers: [mapbox,markers],
-			maxZoom: 15
+			maxZoom: 13
 	});
 
 	L.control.layers(baseMap,overlays,{ collapsed: false }).addTo(map);
