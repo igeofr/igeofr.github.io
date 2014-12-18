@@ -55,7 +55,7 @@ La donnée est disponible sous licence [CC BY-SA 3.0 FR]
 Les difficultés :
 - extraire les informations de la DGAC dans un tableur
 
-Une piste : Suite à la découverte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait peut être plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) pour récupérer le listing.  
+Une piste : Suite à la découverte de ce lien : [http://listedrones.dsac.fr] (http://listedrones.dsac.fr) il serait peut être plus simple d'utiliser [cet outil](http://www.convertcsv.com/html-table-to-csv.htm) (html table to csv) ou bien [celui-ci](https://import.io) pour récupérer le listing.  
 - identifier facilement les changements dans le fichier de la DGAC
 - modifier l'emplacement d'un point lorsque l'adresse évolue (en utilisant les lat-long)
 
