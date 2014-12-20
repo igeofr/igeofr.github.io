@@ -155,9 +155,6 @@
 			</div>
 	</div>
 
-
-
-
 	<div id="map" class="sidebar-map"></div>
 	<script type="text/javascript">
 
@@ -194,15 +191,50 @@
 								iconUrl: 'location_operateurs.svg',
 								iconSize: [36, 36],
 								iconAnchor: [18, 36],
-								popupAnchor: [-1, -20]
+								popupAnchor: [0, -20]
 								});
+
 	var myIcon1 = L.icon({
 								iconUrl: 'location_constructeurs.svg',
 								iconSize: [36, 36],
 								iconAnchor: [18, 36],
-								popupAnchor: [-1, -20]
+								popupAnchor: [0, -20]
 								});
 
+	var myIcon_s1= L.icon({
+								iconUrl: 'location_s1.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36],
+								popupAnchor: [0, -20]
+								});
+
+	var myIcon_s2= L.icon({
+								iconUrl: 'location_s2.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36],
+								popupAnchor: [0, -20]
+								});
+
+	var myIcon_s3= L.icon({
+								iconUrl: 'location_s3.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36],
+								popupAnchor: [0, -20]
+								});
+
+	var myIcon_s4 = L.icon({
+								iconUrl: 'location_s4.svg',
+								iconSize: [36, 36],
+								iconAnchor: [18, 36],
+								popupAnchor: [0, -20]
+								});
+
+	var myIconfpdc = L.icon({
+								iconUrl: 'location_fpdc.svg',
+								iconSize: [30, 30],
+								iconAnchor: [15, 30],
+								popupAnchor: [0, -30]
+								});
 //----------------------------------------------------------------------------------------------------------------
 
 	coords_constructeurs = []; //define an array to store coordinates
@@ -349,12 +381,678 @@
 			}
 		});
 
+//--------------------------------------
+		coords_s_un = []; //define an array to store coordinates
+		$.getJSON('20140918_exploitants_S1.geojson', function(data) {
+			var exploitants_s_un = L.geoJson(data, {
+				onEachFeature: function (feature, layer) {
+					var strfpdc = '';
+					if (feature.properties.FPDC == 1) {
+						strfpdc = '<a>Oui</a>';
+					} else if (feature.properties.FPDC == 0) {
+						strfpdc ='/';
+					}
+					var stragr = '';
+					if (feature.properties.AGR == 1) {
+						stragr = '<a>Oui</a>';
+					} else if (feature.properties.AGR == 0) {
+						stragr ='/';
+					}
+					var strforagr = '';
+					if (feature.properties.FOR_AGR == 1) {
+						strforagr = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AGR == 0) {
+						strforagr ='/';
+					}
+					var strlrg = '';
+					if (feature.properties.LRG == 1) {
+						strlrg = '<a>Oui</a>';
+					} else if (feature.properties.LRG == 0) {
+						strlrg ='/';
+					}
+					var strforlrg = '';
+					if (feature.properties.FOR_LRG == 1) {
+						strforlrg = '<a>Oui</a>';
+					} else if (feature.properties.FOR_LRG == 0) {
+						strforlrg ='/';
+					}
+					var strpub = '';
+					if (feature.properties.PUB == 1) {
+						strpub = '<a>Oui</a>';
+					} else if (feature.properties.PUB == 0) {
+						strpub ='/';
+					}
+					var strforpub = '';
+					if (feature.properties.FOR_PUB == 1) {
+						strforpub = '<a>Oui</a>';
+					} else if (feature.properties.FOR_PUB == 0) {
+						strforpub ='/';
+					}
+					var strobs = '';
+					if (feature.properties.OBS == 1) {
+						strobs = '<a>Oui</a>';
+					} else if (feature.properties.OBS == 0) {
+						strobs ='/';
+					}
+					var strforobs = '';
+					if (feature.properties.FOR_OBS == 1) {
+						strforobs = '<a>Oui</a>';
+					} else if (feature.properties.FOR_OBS == 0) {
+						strforobs ='/';
+					}
+					var straut = '';
+					if (feature.properties.AUT == 1) {
+						straut = '<a>Oui</a>';
+					} else if (feature.properties.AUT == 0) {
+						straut ='/';
+					}
+					var strforaut = '';
+					if (feature.properties.FOR_AUT == 1) {
+						strforaut = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AUT == 0) {
+						strforaut ='/';
+					}
+					//----------------------------------------------------------------------------------------------------------------
+
+					var strs1= '';
+					if (feature.properties.S1 == 1) {
+						strs1 = '<a>Oui</a>';
+					} else if (feature.properties.S1 == 0) {
+						strs1 ='/';
+					}
+					var strs2 = '';
+					if (feature.properties.S2 == 1) {
+						strs2 = '<a>Oui</a>';
+					} else if (feature.properties.S2 == 0) {
+						strs2 ='/';
+					}
+					var strs3 = '';
+					if (feature.properties.S3 == 1) {
+						strs3 = '<a>Oui</a>';
+					} else if (feature.properties.S3 == 0) {
+						strs3 ='/';
+					}
+					var strs4 = '';
+					if (feature.properties.S4 == 1) {
+						strs4 = '<a>Oui</a>';
+					} else if (feature.properties.S4 == 0) {
+						strs4 ='/';
+					}
+					layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
+					'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+					'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'+
+					'<br><b>Activités :</b>'+
+					'<br><table style="border:0px solid black; width:100%">'+
+						'<tr><td>[AGR] : '+ stragr +'</td>'+
+							'<td>[FOR-AGR] : '+ strforagr +'</td></tr>'+
+							'<tr><td>[LRG] : '+ strlrg +'</td>'+
+								'<td>[FOR-LRG] : '+ strforlrg +'</td></tr>'+
+								'<tr><td>[PUB] : '+ strpub +'</td>'+
+									'<td>[FOR-PUB] : '+ strforpub +'</td></tr>'+
+									'<tr><td>[OBS] : '+ strobs +'</td>'+
+										'<td>[FOR-OBS] : '+ strforobs +'</td></tr>'+
+										'<tr><td>[AUT] : '+ straut+'</td>'+
+											'<td>[FOR-AUT] : '+ strforaut +'</td></tr>'+
+											'</table>'+
+											'<b>Scénarios :</b>'+
+											'<table style="border:0px solid black; width:100%">'+
+												'<tr><td>[S1] : '+ strs1 +'</td>'+
+													'<td>[S2] : '+ strs2 +'</td></tr>'+
+													'<tr><td>[S3] : '+ strs3 +'</td>'+
+														'<td>[S4] : '+ strs4 +'</td></tr>'+
+														'</table>'+
+														'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
+														//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
+
+														);
+														layer.setIcon (layer.options.icon =myIcon_s1);
+														coords_s_un.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
+													}
+		});
+
+		//----------------------------------------------------------------------------------------------------------------
+
+		coords_s_deux = []; //define an array to store coordinates
+		$.getJSON('20140918_exploitants_S2.geojson', function(data) {
+			var exploitants_s_deux = L.geoJson(data, {
+				onEachFeature: function (feature, layer) {
+					var strfpdc = '';
+					if (feature.properties.FPDC == 1) {
+						strfpdc = '<a>Oui</a>';
+					} else if (feature.properties.FPDC == 0) {
+						strfpdc ='/';
+					}
+					var stragr = '';
+					if (feature.properties.AGR == 1) {
+						stragr = '<a>Oui</a>';
+					} else if (feature.properties.AGR == 0) {
+						stragr ='/';
+					}
+					var strforagr = '';
+					if (feature.properties.FOR_AGR == 1) {
+						strforagr = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AGR == 0) {
+						strforagr ='/';
+					}
+					var strlrg = '';
+					if (feature.properties.LRG == 1) {
+						strlrg = '<a>Oui</a>';
+					} else if (feature.properties.LRG == 0) {
+						strlrg ='/';
+					}
+					var strforlrg = '';
+					if (feature.properties.FOR_LRG == 1) {
+						strforlrg = '<a>Oui</a>';
+					} else if (feature.properties.FOR_LRG == 0) {
+						strforlrg ='/';
+					}
+					var strpub = '';
+					if (feature.properties.PUB == 1) {
+						strpub = '<a>Oui</a>';
+					} else if (feature.properties.PUB == 0) {
+						strpub ='/';
+					}
+					var strforpub = '';
+					if (feature.properties.FOR_PUB == 1) {
+						strforpub = '<a>Oui</a>';
+					} else if (feature.properties.FOR_PUB == 0) {
+						strforpub ='/';
+					}
+					var strobs = '';
+					if (feature.properties.OBS == 1) {
+						strobs = '<a>Oui</a>';
+					} else if (feature.properties.OBS == 0) {
+						strobs ='/';
+					}
+					var strforobs = '';
+					if (feature.properties.FOR_OBS == 1) {
+						strforobs = '<a>Oui</a>';
+					} else if (feature.properties.FOR_OBS == 0) {
+						strforobs ='/';
+					}
+					var straut = '';
+					if (feature.properties.AUT == 1) {
+						straut = '<a>Oui</a>';
+					} else if (feature.properties.AUT == 0) {
+						straut ='/';
+					}
+					var strforaut = '';
+					if (feature.properties.FOR_AUT == 1) {
+						strforaut = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AUT == 0) {
+						strforaut ='/';
+					}
+					//----------------------------------------------------------------------------------------------------------------
+
+					var strs1= '';
+					if (feature.properties.S1 == 1) {
+						strs1 = '<a>Oui</a>';
+					} else if (feature.properties.S1 == 0) {
+						strs1 ='/';
+					}
+					var strs2 = '';
+					if (feature.properties.S2 == 1) {
+						strs2 = '<a>Oui</a>';
+					} else if (feature.properties.S2 == 0) {
+						strs2 ='/';
+					}
+					var strs3 = '';
+					if (feature.properties.S3 == 1) {
+						strs3 = '<a>Oui</a>';
+					} else if (feature.properties.S3 == 0) {
+						strs3 ='/';
+					}
+					var strs4 = '';
+					if (feature.properties.S4 == 1) {
+						strs4 = '<a>Oui</a>';
+					} else if (feature.properties.S4 == 0) {
+						strs4 ='/';
+					}
+					layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
+					'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+					'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'+
+					'<br><b>Activités :</b>'+
+					'<br><table style="border:0px solid black; width:100%">'+
+						'<tr><td>[AGR] : '+ stragr +'</td>'+
+							'<td>[FOR-AGR] : '+ strforagr +'</td></tr>'+
+							'<tr><td>[LRG] : '+ strlrg +'</td>'+
+								'<td>[FOR-LRG] : '+ strforlrg +'</td></tr>'+
+								'<tr><td>[PUB] : '+ strpub +'</td>'+
+									'<td>[FOR-PUB] : '+ strforpub +'</td></tr>'+
+									'<tr><td>[OBS] : '+ strobs +'</td>'+
+										'<td>[FOR-OBS] : '+ strforobs +'</td></tr>'+
+										'<tr><td>[AUT] : '+ straut+'</td>'+
+											'<td>[FOR-AUT] : '+ strforaut +'</td></tr>'+
+											'</table>'+
+											'<b>Scénarios :</b>'+
+											'<table style="border:0px solid black; width:100%">'+
+												'<tr><td>[S1] : '+ strs1 +'</td>'+
+													'<td>[S2] : '+ strs2 +'</td></tr>'+
+													'<tr><td>[S3] : '+ strs3 +'</td>'+
+														'<td>[S4] : '+ strs4 +'</td></tr>'+
+														'</table>'+
+														'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
+														//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
+
+														);
+														layer.setIcon (layer.options.icon =myIcon_s2);
+														coords_s_deux.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
+													}
+		});
+
+		//----------------------------------------------------------------------------------------------------------------
+
+		coords_s_trois = []; //define an array to store coordinates
+		$.getJSON('20140918_exploitants_S3.geojson', function(data) {
+			var exploitants_s_trois = L.geoJson(data, {
+				onEachFeature: function (feature, layer) {
+					var strfpdc = '';
+					if (feature.properties.FPDC == 1) {
+						strfpdc = '<a>Oui</a>';
+					} else if (feature.properties.FPDC == 0) {
+						strfpdc ='/';
+					}
+					var stragr = '';
+					if (feature.properties.AGR == 1) {
+						stragr = '<a>Oui</a>';
+					} else if (feature.properties.AGR == 0) {
+						stragr ='/';
+					}
+					var strforagr = '';
+					if (feature.properties.FOR_AGR == 1) {
+						strforagr = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AGR == 0) {
+						strforagr ='/';
+					}
+					var strlrg = '';
+					if (feature.properties.LRG == 1) {
+						strlrg = '<a>Oui</a>';
+					} else if (feature.properties.LRG == 0) {
+						strlrg ='/';
+					}
+					var strforlrg = '';
+					if (feature.properties.FOR_LRG == 1) {
+						strforlrg = '<a>Oui</a>';
+					} else if (feature.properties.FOR_LRG == 0) {
+						strforlrg ='/';
+					}
+					var strpub = '';
+					if (feature.properties.PUB == 1) {
+						strpub = '<a>Oui</a>';
+					} else if (feature.properties.PUB == 0) {
+						strpub ='/';
+					}
+					var strforpub = '';
+					if (feature.properties.FOR_PUB == 1) {
+						strforpub = '<a>Oui</a>';
+					} else if (feature.properties.FOR_PUB == 0) {
+						strforpub ='/';
+					}
+					var strobs = '';
+					if (feature.properties.OBS == 1) {
+						strobs = '<a>Oui</a>';
+					} else if (feature.properties.OBS == 0) {
+						strobs ='/';
+					}
+					var strforobs = '';
+					if (feature.properties.FOR_OBS == 1) {
+						strforobs = '<a>Oui</a>';
+					} else if (feature.properties.FOR_OBS == 0) {
+						strforobs ='/';
+					}
+					var straut = '';
+					if (feature.properties.AUT == 1) {
+						straut = '<a>Oui</a>';
+					} else if (feature.properties.AUT == 0) {
+						straut ='/';
+					}
+					var strforaut = '';
+					if (feature.properties.FOR_AUT == 1) {
+						strforaut = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AUT == 0) {
+						strforaut ='/';
+					}
+					//----------------------------------------------------------------------------------------------------------------
+
+					var strs1= '';
+					if (feature.properties.S1 == 1) {
+						strs1 = '<a>Oui</a>';
+					} else if (feature.properties.S1 == 0) {
+						strs1 ='/';
+					}
+					var strs2 = '';
+					if (feature.properties.S2 == 1) {
+						strs2 = '<a>Oui</a>';
+					} else if (feature.properties.S2 == 0) {
+						strs2 ='/';
+					}
+					var strs3 = '';
+					if (feature.properties.S3 == 1) {
+						strs3 = '<a>Oui</a>';
+					} else if (feature.properties.S3 == 0) {
+						strs3 ='/';
+					}
+					var strs4 = '';
+					if (feature.properties.S4 == 1) {
+						strs4 = '<a>Oui</a>';
+					} else if (feature.properties.S4 == 0) {
+						strs4 ='/';
+					}
+					layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
+					'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+					'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'+
+					'<br><b>Activités :</b>'+
+					'<br><table style="border:0px solid black; width:100%">'+
+						'<tr><td>[AGR] : '+ stragr +'</td>'+
+							'<td>[FOR-AGR] : '+ strforagr +'</td></tr>'+
+							'<tr><td>[LRG] : '+ strlrg +'</td>'+
+								'<td>[FOR-LRG] : '+ strforlrg +'</td></tr>'+
+								'<tr><td>[PUB] : '+ strpub +'</td>'+
+									'<td>[FOR-PUB] : '+ strforpub +'</td></tr>'+
+									'<tr><td>[OBS] : '+ strobs +'</td>'+
+										'<td>[FOR-OBS] : '+ strforobs +'</td></tr>'+
+										'<tr><td>[AUT] : '+ straut+'</td>'+
+											'<td>[FOR-AUT] : '+ strforaut +'</td></tr>'+
+											'</table>'+
+											'<b>Scénarios :</b>'+
+											'<table style="border:0px solid black; width:100%">'+
+												'<tr><td>[S1] : '+ strs1 +'</td>'+
+													'<td>[S2] : '+ strs2 +'</td></tr>'+
+													'<tr><td>[S3] : '+ strs3 +'</td>'+
+														'<td>[S4] : '+ strs4 +'</td></tr>'+
+														'</table>'+
+														'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
+														//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
+
+														);
+														layer.setIcon (layer.options.icon =myIcon_s3);
+														coords_s_trois.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
+													}
+		});
+
+		//----------------------------------------------------------------------------------------------------------------
+		coords_s_quatre = []; //define an array to store coordinates
+		$.getJSON('20140918_exploitants_S4.geojson', function(data) {
+			var exploitants_s_quatre = L.geoJson(data, {
+				onEachFeature: function (feature, layer) {
+					var strfpdc = '';
+					if (feature.properties.FPDC == 1) {
+						strfpdc = '<a>Oui</a>';
+					} else if (feature.properties.FPDC == 0) {
+						strfpdc ='/';
+					}
+					var stragr = '';
+					if (feature.properties.AGR == 1) {
+						stragr = '<a>Oui</a>';
+					} else if (feature.properties.AGR == 0) {
+						stragr ='/';
+					}
+					var strforagr = '';
+					if (feature.properties.FOR_AGR == 1) {
+						strforagr = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AGR == 0) {
+						strforagr ='/';
+					}
+					var strlrg = '';
+					if (feature.properties.LRG == 1) {
+						strlrg = '<a>Oui</a>';
+					} else if (feature.properties.LRG == 0) {
+						strlrg ='/';
+					}
+					var strforlrg = '';
+					if (feature.properties.FOR_LRG == 1) {
+						strforlrg = '<a>Oui</a>';
+					} else if (feature.properties.FOR_LRG == 0) {
+						strforlrg ='/';
+					}
+					var strpub = '';
+					if (feature.properties.PUB == 1) {
+						strpub = '<a>Oui</a>';
+					} else if (feature.properties.PUB == 0) {
+						strpub ='/';
+					}
+					var strforpub = '';
+					if (feature.properties.FOR_PUB == 1) {
+						strforpub = '<a>Oui</a>';
+					} else if (feature.properties.FOR_PUB == 0) {
+						strforpub ='/';
+					}
+					var strobs = '';
+					if (feature.properties.OBS == 1) {
+						strobs = '<a>Oui</a>';
+					} else if (feature.properties.OBS == 0) {
+						strobs ='/';
+					}
+					var strforobs = '';
+					if (feature.properties.FOR_OBS == 1) {
+						strforobs = '<a>Oui</a>';
+					} else if (feature.properties.FOR_OBS == 0) {
+						strforobs ='/';
+					}
+					var straut = '';
+					if (feature.properties.AUT == 1) {
+						straut = '<a>Oui</a>';
+					} else if (feature.properties.AUT == 0) {
+						straut ='/';
+					}
+					var strforaut = '';
+					if (feature.properties.FOR_AUT == 1) {
+						strforaut = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AUT == 0) {
+						strforaut ='/';
+					}
+					//----------------------------------------------------------------------------------------------------------------
+
+					var strs1= '';
+					if (feature.properties.S1 == 1) {
+						strs1 = '<a>Oui</a>';
+					} else if (feature.properties.S1 == 0) {
+						strs1 ='/';
+					}
+					var strs2 = '';
+					if (feature.properties.S2 == 1) {
+						strs2 = '<a>Oui</a>';
+					} else if (feature.properties.S2 == 0) {
+						strs2 ='/';
+					}
+					var strs3 = '';
+					if (feature.properties.S3 == 1) {
+						strs3 = '<a>Oui</a>';
+					} else if (feature.properties.S3 == 0) {
+						strs3 ='/';
+					}
+					var strs4 = '';
+					if (feature.properties.S4 == 1) {
+						strs4 = '<a>Oui</a>';
+					} else if (feature.properties.S4 == 0) {
+						strs4 ='/';
+					}
+					layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
+					'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+					'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'+
+					'<br><b>Activités :</b>'+
+					'<br><table style="border:0px solid black; width:100%">'+
+						'<tr><td>[AGR] : '+ stragr +'</td>'+
+							'<td>[FOR-AGR] : '+ strforagr +'</td></tr>'+
+							'<tr><td>[LRG] : '+ strlrg +'</td>'+
+								'<td>[FOR-LRG] : '+ strforlrg +'</td></tr>'+
+								'<tr><td>[PUB] : '+ strpub +'</td>'+
+									'<td>[FOR-PUB] : '+ strforpub +'</td></tr>'+
+									'<tr><td>[OBS] : '+ strobs +'</td>'+
+										'<td>[FOR-OBS] : '+ strforobs +'</td></tr>'+
+										'<tr><td>[AUT] : '+ straut+'</td>'+
+											'<td>[FOR-AUT] : '+ strforaut +'</td></tr>'+
+											'</table>'+
+											'<b>Scénarios :</b>'+
+											'<table style="border:0px solid black; width:100%">'+
+												'<tr><td>[S1] : '+ strs1 +'</td>'+
+													'<td>[S2] : '+ strs2 +'</td></tr>'+
+													'<tr><td>[S3] : '+ strs3 +'</td>'+
+														'<td>[S4] : '+ strs4 +'</td></tr>'+
+														'</table>'+
+														'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
+														//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
+
+														);
+														layer.setIcon (layer.options.icon =myIcon_s4);
+														coords_s_quatre.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
+													}
+												});
+
+
+		//----------------------------------------------------------------------------------------------------------------
+		coords_s_fpdc = []; //define an array to store coordinates
+		$.getJSON('20140918_exploitants_FPDC.geojson', function(data) {
+			var exploitants_s_fpdc = L.geoJson(data, {
+				onEachFeature: function (feature, layer) {
+					var strfpdc = '';
+					if (feature.properties.FPDC == 1) {
+						strfpdc = '<a>Oui</a>';
+					} else if (feature.properties.FPDC == 0) {
+						strfpdc ='/';
+					}
+					var stragr = '';
+					if (feature.properties.AGR == 1) {
+						stragr = '<a>Oui</a>';
+					} else if (feature.properties.AGR == 0) {
+						stragr ='/';
+					}
+					var strforagr = '';
+					if (feature.properties.FOR_AGR == 1) {
+						strforagr = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AGR == 0) {
+						strforagr ='/';
+					}
+					var strlrg = '';
+					if (feature.properties.LRG == 1) {
+						strlrg = '<a>Oui</a>';
+					} else if (feature.properties.LRG == 0) {
+						strlrg ='/';
+					}
+					var strforlrg = '';
+					if (feature.properties.FOR_LRG == 1) {
+						strforlrg = '<a>Oui</a>';
+					} else if (feature.properties.FOR_LRG == 0) {
+						strforlrg ='/';
+					}
+					var strpub = '';
+					if (feature.properties.PUB == 1) {
+						strpub = '<a>Oui</a>';
+					} else if (feature.properties.PUB == 0) {
+						strpub ='/';
+					}
+					var strforpub = '';
+					if (feature.properties.FOR_PUB == 1) {
+						strforpub = '<a>Oui</a>';
+					} else if (feature.properties.FOR_PUB == 0) {
+						strforpub ='/';
+					}
+					var strobs = '';
+					if (feature.properties.OBS == 1) {
+						strobs = '<a>Oui</a>';
+					} else if (feature.properties.OBS == 0) {
+						strobs ='/';
+					}
+					var strforobs = '';
+					if (feature.properties.FOR_OBS == 1) {
+						strforobs = '<a>Oui</a>';
+					} else if (feature.properties.FOR_OBS == 0) {
+						strforobs ='/';
+					}
+					var straut = '';
+					if (feature.properties.AUT == 1) {
+						straut = '<a>Oui</a>';
+					} else if (feature.properties.AUT == 0) {
+						straut ='/';
+					}
+					var strforaut = '';
+					if (feature.properties.FOR_AUT == 1) {
+						strforaut = '<a>Oui</a>';
+					} else if (feature.properties.FOR_AUT == 0) {
+						strforaut ='/';
+					}
+					//----------------------------------------------------------------------------------------------------------------
+
+					var strs1= '';
+					if (feature.properties.S1 == 1) {
+						strs1 = '<a>Oui</a>';
+					} else if (feature.properties.S1 == 0) {
+						strs1 ='/';
+					}
+					var strs2 = '';
+					if (feature.properties.S2 == 1) {
+						strs2 = '<a>Oui</a>';
+					} else if (feature.properties.S2 == 0) {
+						strs2 ='/';
+					}
+					var strs3 = '';
+					if (feature.properties.S3 == 1) {
+						strs3 = '<a>Oui</a>';
+					} else if (feature.properties.S3 == 0) {
+						strs3 ='/';
+					}
+					var strs4 = '';
+					if (feature.properties.S4 == 1) {
+						strs4 = '<a>Oui</a>';
+					} else if (feature.properties.S4 == 0) {
+						strs4 ='/';
+					}
+					layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
+					'<br>'+ feature.properties.CODE_P+'&nbsp;'+ feature.properties.VILLE+'&nbsp; - &nbsp;'+ feature.properties.PAYS+
+					'<br><b>Site web : </b><a href=" ' + feature.properties.WEB + '">'+feature.properties.WEB +'</a>'+
+					'<br><b>Activités :</b>'+
+					'<br><table style="border:0px solid black; width:100%">'+
+						'<tr><td>[AGR] : '+ stragr +'</td>'+
+							'<td>[FOR-AGR] : '+ strforagr +'</td></tr>'+
+							'<tr><td>[LRG] : '+ strlrg +'</td>'+
+								'<td>[FOR-LRG] : '+ strforlrg +'</td></tr>'+
+								'<tr><td>[PUB] : '+ strpub +'</td>'+
+									'<td>[FOR-PUB] : '+ strforpub +'</td></tr>'+
+									'<tr><td>[OBS] : '+ strobs +'</td>'+
+										'<td>[FOR-OBS] : '+ strforobs +'</td></tr>'+
+										'<tr><td>[AUT] : '+ straut+'</td>'+
+											'<td>[FOR-AUT] : '+ strforaut +'</td></tr>'+
+											'</table>'+
+											'<b>Scénarios :</b>'+
+											'<table style="border:0px solid black; width:100%">'+
+												'<tr><td>[S1] : '+ strs1 +'</td>'+
+													'<td>[S2] : '+ strs2 +'</td></tr>'+
+													'<tr><td>[S3] : '+ strs3 +'</td>'+
+														'<td>[S4] : '+ strs4 +'</td></tr>'+
+														'</table>'+
+														'<b>Adhérent à la <a href =http://www.federation-drone.org>FPDC</a> :</b> '+ strfpdc
+														//'<br><a style="color:red;"> Vérifié le : </a><a style="color:red;">'+feature.properties.VERIF +'</a>'
+
+														);
+														layer.setIcon (layer.options.icon =myIconfpdc);
+														layer.setOpacity(0.8);
+														coords_s_fpdc.push(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates));
+													}
+												});
+
 
 //----------------------------------------------------------------------------------------------------------------
+
+	var markers_const = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_const.addLayer(constructeurs);
 
 	var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
 			markers.addLayer(drone);
 
+	var markers_s_un = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_s_un.addLayer(exploitants_s_un);
+
+	var markers_s_deux = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_s_deux.addLayer(exploitants_s_deux);
+
+	var markers_s_trois = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_s_trois.addLayer(exploitants_s_trois);
+
+	var markers_s_quatre = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_s_quatre.addLayer(exploitants_s_quatre);
+
+	var markers_s_fpdc = L.markerClusterGroup({spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: true, disableClusteringAtZoom: 12});
+	markers_s_fpdc.addLayer(exploitants_s_fpdc);
 //----------------------------------------------------------------------------------------------------------------
 
 //	var heat = L.heatLayer(coords, {maxZoom: 9,max:1, radius: 15,blur: 15, gradient: {
@@ -368,8 +1066,13 @@
 
 //----------------------------------------------------------------------------------------------------------------
 
-	var overlays = {"Constructeurs d'aéronefs télépilotés ayant <br>reçu une attestation de conception type au 23/09/2014<br>-----------------" : constructeurs,
-									"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés au 18/09/2014": markers};
+	var overlays = {"Constructeurs d'aéronefs télépilotés ayant <br>reçu une attestation de conception type au 23/09/2014<br>-----------------" : markers_const,
+									"Exploitants en activités particulières<br>au moyen d'aéronefs télé-pilotés au 18/09/2014": markers,
+									"Exploitants pour le scénario S1":markers_s_un,
+									"Exploitants pour le scénario S2":markers_s_deux,
+									"Exploitants pour le scénario S3":markers_s_trois,
+									"Exploitants pour le scénario S4":markers_s_quatre,
+									"Exploitants adhérents à la FPDC":markers_s_fpdc};
 									//"Heatmap des exploitants en activités <br>particulières au moyen d'aéronefs télé-pilotés":heat
 
 //----------------------------------------------------------------------------------------------------------------
@@ -425,7 +1128,11 @@
 
 });
 });
-
+});
+});
+});
+});
+});
 	</script>
 </body>
 </html>
