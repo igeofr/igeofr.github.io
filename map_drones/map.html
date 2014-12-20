@@ -238,7 +238,7 @@
 //----------------------------------------------------------------------------------------------------------------
 
 	coords_constructeurs = []; //define an array to store coordinates
-	$.getJSON('20140923_constructeurs.geojson', function(data) {
+	$.getJSON('201409/20140923_constructeurs.geojson', function(data) {
 	var constructeurs = L.geoJson(data, {
 		onEachFeature: function (feature, layer) {
 			layer.bindPopup('<b><a style="color:red;">'+feature.properties.NOM +'</a></b>'+
@@ -254,7 +254,7 @@
 
 	coords = []; //define an array to store coordinates
 
-	$.getJSON('20140918_exploitants.geojson', function(data) {
+	$.getJSON('201409/20140918_exploitants.geojson', function(data) {
 		var drone = L.geoJson(data, {
 			onEachFeature: function (feature, layer) {
 				var strfpdc = '';
@@ -383,7 +383,7 @@
 
 //--------------------------------------
 		coords_s_un = []; //define an array to store coordinates
-		$.getJSON('20140918_exploitants_S1.geojson', function(data) {
+		$.getJSON('201409/20140918_exploitants_S1.geojson', function(data) {
 			var exploitants_s_un = L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					var strfpdc = '';
@@ -513,7 +513,7 @@
 		//----------------------------------------------------------------------------------------------------------------
 
 		coords_s_deux = []; //define an array to store coordinates
-		$.getJSON('20140918_exploitants_S2.geojson', function(data) {
+		$.getJSON('201409/20140918_exploitants_S2.geojson', function(data) {
 			var exploitants_s_deux = L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					var strfpdc = '';
@@ -643,7 +643,7 @@
 		//----------------------------------------------------------------------------------------------------------------
 
 		coords_s_trois = []; //define an array to store coordinates
-		$.getJSON('20140918_exploitants_S3.geojson', function(data) {
+		$.getJSON('201409/20140918_exploitants_S3.geojson', function(data) {
 			var exploitants_s_trois = L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					var strfpdc = '';
@@ -772,7 +772,7 @@
 
 		//----------------------------------------------------------------------------------------------------------------
 		coords_s_quatre = []; //define an array to store coordinates
-		$.getJSON('20140918_exploitants_S4.geojson', function(data) {
+		$.getJSON('201409/20140918_exploitants_S4.geojson', function(data) {
 			var exploitants_s_quatre = L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					var strfpdc = '';
@@ -902,7 +902,7 @@
 
 		//----------------------------------------------------------------------------------------------------------------
 		coords_s_fpdc = []; //define an array to store coordinates
-		$.getJSON('20140918_exploitants_FPDC.geojson', function(data) {
+		$.getJSON('201409/20140918_exploitants_FPDC.geojson', function(data) {
 			var exploitants_s_fpdc = L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					var strfpdc = '';
