@@ -3,10 +3,10 @@
 [Exemple de carte localisant les exploitants en activités particulières au moyen d'aéronefs télé-pilotés.] (http://igeofr.github.io/map_drones/map.html)
 
 ## Téléchargement
-Le fichier des exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson 
+Le fichier des exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson
 
-- [Fichier créé à partir de la liste du 18/09/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/20140918_exploitants.geojson)
-- [Fichier créé à partir de la liste du 02/07/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/20140702_exploitants.geojson)
+- [Fichier créé à partir de la liste du 18/09/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/201409/20140918_exploitants.geojson)
+- [Fichier créé à partir de la liste du 02/07/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/201407/20140702_exploitants.geojson)
 
 ## Les champs du fichiers
 
@@ -31,12 +31,12 @@ activités de lutte contre l’incendie
 - S2 : Scénario S2 autorisé
 - S3 : Scénario S3 autorisé
 - S4 : Scénario S4 autorisé
-- FPDC : Membre de la Fédération professionnelle des drones civils 
+- FPDC : Membre de la Fédération professionnelle des drones civils
 
 ## Source des données
 Les données sont issues de la liste gérée par la DGAC et disponible [ici] (http://listedrones.dsac.fr).
 
-Cette liste est régulièrement [publiée en pdf] (http://www.developpement-durable.gouv.fr/Effectuer-des-activites) sur le site du ministère de l'écologie, du développement durable et de l'énergie. 
+Cette liste est régulièrement [publiée en pdf] (http://www.developpement-durable.gouv.fr/Effectuer-des-activites) sur le site du ministère de l'écologie, du développement durable et de l'énergie.
 
 La Fédération Nationale du Drone Civil m'a mis à disposition le listing de ses membres de manière à ajouter un champ supplémentaire.
 
@@ -44,7 +44,7 @@ La Fédération Nationale du Drone Civil m'a mis à disposition le listing de se
 La donnée est disponible sous licence [CC BY-SA 3.0 FR]
 (http://creativecommons.org/licenses/by-sa/3.0/fr/).
 
-##Création du fichier initial 
+##Création du fichier initial
 
 - Téléchargement du dernier fichier mis à disposition par la DGAC (fichier du 02/07/2014)
 - Export du fichier PDF en tableur  
