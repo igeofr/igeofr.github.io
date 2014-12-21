@@ -5,6 +5,7 @@
 ## Téléchargement
 Le fichier des exploitants en activités particulières au moyen d'aéronefs télé-pilotés est disponible au format .geojson
 
+- [Fichier créé à partir de la liste du 15/11/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/201411/20141115_exploitants.geojson)
 - [Fichier créé à partir de la liste du 18/09/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/201409/20140918_exploitants.geojson)
 - [Fichier créé à partir de la liste du 02/07/2014](https://github.com/igeofr/igeofr.github.io/blob/master/map_drones/201407/20140702_exploitants.geojson)
 
